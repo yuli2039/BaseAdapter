@@ -47,10 +47,11 @@ public class MultiItemRvActivity extends AppCompatActivity {
             public void onItemClick(View view, RecyclerView.ViewHolder holder, int position) {
                 Toast.makeText(MultiItemRvActivity.this, "Click:" + position, Toast.LENGTH_SHORT).show();
             }
-
+        });
+        adapter.setOnItemLongClickListener(new MultiTypeRecyclerAdapter.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(View view, RecyclerView.ViewHolder holder, int position) {
-                Toast.makeText(MultiItemRvActivity.this, "LongClick:" + position, Toast.LENGTH_SHORT).show();
+                Toast.makeText(MultiItemRvActivity.this, "Long Click:" + position, Toast.LENGTH_SHORT).show();
                 return true;
             }
         });

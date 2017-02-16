@@ -59,11 +59,6 @@ public class RecyclerViewActivity extends AppCompatActivity {
             public void onItemClick(View view, RecyclerView.ViewHolder holder, int position) {
                 Toast.makeText(RecyclerViewActivity.this, "pos = " + position, Toast.LENGTH_SHORT).show();
             }
-
-            @Override
-            public boolean onItemLongClick(View view, RecyclerView.ViewHolder holder, int position) {
-                return true;
-            }
         });
 
         mAdapter.setEmptyView(findViewById(R.id.flEmpty));

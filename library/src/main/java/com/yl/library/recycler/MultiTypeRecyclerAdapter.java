@@ -17,6 +17,7 @@ public class MultiTypeRecyclerAdapter<T> extends RecyclerView.Adapter<ViewHolder
     protected View mEmptyView;
     protected ItemViewDelegateManager mItemViewDelegateManager;
     protected OnItemClickListener mOnItemClickListener;
+    protected OnItemLongClickListener mOnItemLongClickListener;
     protected OnClickPositionListener mOnClickPositionListener;
 
     public MultiTypeRecyclerAdapter(Context context, List<T> datas) {
@@ -76,9 +77,9 @@ public class MultiTypeRecyclerAdapter<T> extends RecyclerView.Adapter<ViewHolder
         viewHolder.getConvertView().setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                if (mOnItemClickListener != null) {
+                if (mOnItemLongClickListener != null) {
                     int position = viewHolder.getAdapterPosition();
-                    return mOnItemClickListener.onItemLongClick(v, viewHolder,
+                    return mOnItemLongClickListener.onItemLongClick(v, viewHolder,
                             mOnClickPositionListener == null ? position : mOnClickPositionListener.updateClickPosition(position));
                 }
                 return false;
@@ -124,12 +125,18 @@ public class MultiTypeRecyclerAdapter<T> extends RecyclerView.Adapter<ViewHolder
 
     public interface OnItemClickListener {
         void onItemClick(View view, RecyclerView.ViewHolder holder, int position);
+    }
 
+    public interface OnItemLongClickListener {
         boolean onItemLongClick(View view, RecyclerView.ViewHolder holder, int position);
     }
 
     public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
         this.mOnItemClickListener = onItemClickListener;
+    }
+
+    public void setOnItemLongClickListener(OnItemLongClickListener onItemClickListener) {
+        this.mOnItemLongClickListener = onItemClickListener;// TODO: 2017/2/16
     }
 
     private class EmptyDataObserver extends RecyclerView.AdapterDataObserver {
