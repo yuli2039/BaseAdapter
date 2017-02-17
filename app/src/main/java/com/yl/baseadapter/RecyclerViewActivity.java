@@ -15,7 +15,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.yl.library.common.DefaultLoadMoreFooter;
+import com.yl.library.common.loadmore.DefaultLoadMoreFooter;
 import com.yl.library.common.ViewHolder;
 import com.yl.library.recycler.RecyclerAdapter;
 import com.yl.library.recycler.ViewHolder4r;

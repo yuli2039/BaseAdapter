@@ -8,6 +8,7 @@ import android.view.View;
 import com.yl.baseadapter.adapter.ChatAdapterForListView;
 import com.yl.baseadapter.entity.ChatMessage;
 import com.yl.library.list.AutoLoadListView;
+import com.yl.library.common.refresh.RefreshLayout;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,11 +21,20 @@ public class MultiItemListActivity extends AppCompatActivity {
     private AutoLoadListView mListView;
     private List<ChatMessage> mDatas = new ArrayList<>();
     private ChatAdapterForListView adapter;
+    private RefreshLayout mRefreshLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_listview);
+
+        mRefreshLayout = (RefreshLayout) findViewById(R.id.refreshLayout);
+        mRefreshLayout.setOnRefreshListener(new RefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                refresh();
+            }
+        });
 
         mDatas.addAll(ChatMessage.MOCK_DATAS);
 
@@ -42,23 +52,29 @@ public class MultiItemListActivity extends AppCompatActivity {
 
     }
 
-    // 模拟下拉刷新，会重置状态
-    public void btnRefresh(View v) {
-        mListView.reset();
-        loadMoreTimes = 0;
-
-        mDatas.clear();
-        mDatas.addAll(ChatMessage.MOCK_DATAS);
-        adapter.notifyDataSetChanged();
-    }
-
     // 模拟没有数据时显示emptyView
     public void btnClear(View v) {
         mDatas.clear();
         adapter.notifyDataSetChanged();
     }
 
-    public void loadMore() {
+    private void refresh() {
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                mListView.reset();
+                loadMoreTimes = 0;
+
+                mDatas.clear();
+                mDatas.addAll(ChatMessage.MOCK_DATAS);
+                adapter.notifyDataSetChanged();
+
+                mRefreshLayout.refreshComplete();
+            }
+        }, 2000);
+    }
+
+    private void loadMore() {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {

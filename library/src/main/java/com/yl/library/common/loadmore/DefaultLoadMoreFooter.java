@@ -1,4 +1,4 @@
-package com.yl.library.common;
+package com.yl.library.common.loadmore;
 
 import android.content.Context;
 import android.content.res.Resources;
@@ -11,10 +11,6 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.yl.library.R;
-
-import static com.yl.library.common.ILoadMore.Status.COMPLETE;
-import static com.yl.library.common.ILoadMore.Status.LOADING;
-import static com.yl.library.common.ILoadMore.Status.NOMORE;
 
 
 /**
@@ -39,7 +35,7 @@ public class DefaultLoadMoreFooter extends LinearLayout implements ILoadMore {
         setLayoutParams(new AbsListView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, dp2px(60)));
 
         mProgressBar = new ProgressBar(getContext());
-        LayoutParams progressBarParams = new LayoutParams(dp2px(30), dp2px(30));
+        LayoutParams progressBarParams = new LayoutParams(dp2px(25), dp2px(25));
         progressBarParams.rightMargin = dp2px(10);
         mProgressBar.setLayoutParams(progressBarParams);
         addView(mProgressBar);
@@ -51,7 +47,7 @@ public class DefaultLoadMoreFooter extends LinearLayout implements ILoadMore {
         mText.setTextSize(14);
         addView(mText);
 
-        setState(LOADING);
+        setState(Status.LOADING);
     }
 
     @Override
@@ -70,17 +66,17 @@ public class DefaultLoadMoreFooter extends LinearLayout implements ILoadMore {
                 this.setVisibility(View.VISIBLE);
                 mProgressBar.setVisibility(View.VISIBLE);
                 mText.setText(R.string.lmf_loading);
-                mState = LOADING;
+                mState = Status.LOADING;
                 break;
             case COMPLETE:
                 this.setVisibility(View.GONE);
-                mState = COMPLETE;
+                mState = Status.COMPLETE;
                 break;
             case NOMORE:
                 this.setVisibility(View.VISIBLE);
                 mProgressBar.setVisibility(View.GONE);
                 mText.setText(R.string.lmf_no_more);
-                mState = NOMORE;
+                mState = Status.NOMORE;
                 break;
         }
     }

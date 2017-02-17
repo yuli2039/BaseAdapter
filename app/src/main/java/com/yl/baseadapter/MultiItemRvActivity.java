@@ -14,7 +14,7 @@ import android.widget.Toast;
 
 import com.yl.baseadapter.adapter.ChatAdapterForRv;
 import com.yl.baseadapter.entity.ChatMessage;
-import com.yl.library.common.DefaultLoadMoreFooter;
+import com.yl.library.common.loadmore.DefaultLoadMoreFooter;
 import com.yl.library.recycler.MultiTypeRecyclerAdapter;
 import com.yl.library.recycler.wrapper.HeaderAndFooterWrapper;
 import com.yl.library.recycler.wrapper.LoadMoreWrapper;

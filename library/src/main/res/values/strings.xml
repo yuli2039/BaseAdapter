@@ -4,4 +4,10 @@
     <!-- loadMoreFooter -->
     <string name="lmf_loading">正在加载</string>
     <string name="lmf_no_more">没有更多数据了</string>
+
+    <!-- 下拉刷新 -->
+    <string name="ptr_normal">下拉刷新</string>
+    <string name="ptr_refreshing">正在刷新</string>
+    <string name="ptr_release_refresh">释放刷新</string>
+
 </resources>
