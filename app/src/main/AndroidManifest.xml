@@ -27,6 +27,9 @@
             android:name=".MultiItemRvActivity"
             android:label="@string/title_activity_multi_item_rv" >
         </activity>
+        <activity
+            android:name=".ImageActivity" >
+        </activity>
     </application>
 
 </manifest>

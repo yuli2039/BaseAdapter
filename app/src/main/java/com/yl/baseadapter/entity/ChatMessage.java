@@ -73,9 +73,9 @@ public class ChatMessage {
     static {
         ChatMessage msg;
         for (int i = 0; i < 10; i++) {
-            msg = new ChatMessage(R.drawable.xiaohei, "陈一发", "nice to meet you", null, false);
+            msg = new ChatMessage(R.drawable.xiaohei, "陈一发", "nice to meet you" + i, null, false);
             MOCK_DATAS.add(msg);
-            msg = new ChatMessage(R.drawable.renma, "刘飞儿", "nice to meet you too", null, true);
+            msg = new ChatMessage(R.drawable.renma, "刘飞儿", "nice to meet you too" + i, null, true);
             MOCK_DATAS.add(msg);
         }
     }

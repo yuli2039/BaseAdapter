@@ -56,8 +56,8 @@ public class RecyclerViewActivity extends AppCompatActivity {
         };
         mAdapter.setOnItemClickListener(new RecyclerAdapter.OnItemClickListener() {
             @Override
-            public void onItemClick(View view, RecyclerView.ViewHolder holder, int position) {
-                Toast.makeText(RecyclerViewActivity.this, "pos = " + position, Toast.LENGTH_SHORT).show();
+            public void onItemClick(View view, RecyclerView.ViewHolder holder, int position, int viewType) {
+                Toast.makeText(RecyclerViewActivity.this, mDatas.get(position - 2), Toast.LENGTH_SHORT).show();
             }
         });
 

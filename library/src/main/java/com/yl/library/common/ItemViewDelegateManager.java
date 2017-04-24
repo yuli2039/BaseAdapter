@@ -8,17 +8,16 @@ import android.support.v4.util.SparseArrayCompat;
  * @author yl
  */
 public class ItemViewDelegateManager<T> {
-    private SparseArrayCompat<ItemViewDelegate<T>> delegates = new SparseArrayCompat<>();
+    private SparseArrayCompat<ItemViewDelegate<T>> mDelegates = new SparseArrayCompat<>();
 
     public int getItemViewDelegateCount() {
-        return delegates.size();
+        return mDelegates.size();
     }
 
     public void bindData(ViewHolder holder, T item, int position) {
-        int delegatesCount = delegates.size();
         ItemViewDelegate<T> delegate;
-        for (int i = 0; i < delegatesCount; i++) {
-            delegate = delegates.valueAt(i);
+        for (int i = 0; i < mDelegates.size(); i++) {
+            delegate = mDelegates.valueAt(i);
 
             if (delegate.isForThisViewType(item, position)) {
                 delegate.bindData(holder, item, position);
@@ -31,55 +30,22 @@ public class ItemViewDelegateManager<T> {
 
     public ItemViewDelegateManager<T> addDelegate(ItemViewDelegate<T> delegate) {
         if (delegate != null) {
-            int viewType = delegates.size();
-            delegates.put(viewType, delegate);
-        }
-        return this;
-    }
-
-    public ItemViewDelegateManager<T> addDelegate(int viewType, ItemViewDelegate<T> delegate) {
-        if (delegates.get(viewType) != null) {
-            throw new IllegalArgumentException(
-                    "An ItemViewDelegate is already registered for the viewType = "
-                            + viewType
-                            + ". Already registered ItemViewDelegate is "
-                            + delegates.get(viewType));
-        }
-        delegates.put(viewType, delegate);
-        return this;
-    }
-
-    public ItemViewDelegateManager<T> removeDelegate(ItemViewDelegate<T> delegate) {
-        if (delegate == null) {
-            return this;
-        }
-        int indexToRemove = delegates.indexOfValue(delegate);
-
-        if (indexToRemove >= 0) {
-            delegates.removeAt(indexToRemove);
-        }
-        return this;
-    }
-
-    public ItemViewDelegateManager<T> removeDelegate(int itemType) {
-        int indexToRemove = delegates.indexOfKey(itemType);
-
-        if (indexToRemove >= 0) {
-            delegates.removeAt(indexToRemove);
+            int viewType = mDelegates.size();
+            mDelegates.put(viewType, delegate);
         }
         return this;
     }
 
     public int getItemViewType(ItemViewDelegate itemViewDelegate) {
-        return delegates.indexOfValue(itemViewDelegate);
+        return mDelegates.indexOfValue(itemViewDelegate);
     }
 
     public int getItemViewType(T item, int position) {
-        int delegatesCount = delegates.size();
+        int delegatesCount = mDelegates.size();
         for (int i = delegatesCount - 1; i >= 0; i--) {
-            ItemViewDelegate<T> delegate = delegates.valueAt(i);
+            ItemViewDelegate<T> delegate = mDelegates.valueAt(i);
             if (delegate.isForThisViewType(item, position)) {
-                return delegates.keyAt(i);
+                return mDelegates.keyAt(i);
             }
         }
         throw new IllegalArgumentException(
@@ -87,13 +53,13 @@ public class ItemViewDelegateManager<T> {
     }
 
     public ItemViewDelegate getItemViewDelegate(int viewType) {
-        return delegates.get(viewType);
+        return mDelegates.get(viewType);
     }
 
     public ItemViewDelegate getItemViewDelegate(T item, int position) {
-        int delegatesCount = delegates.size();
+        int delegatesCount = mDelegates.size();
         for (int i = delegatesCount - 1; i >= 0; i--) {
-            ItemViewDelegate<T> delegate = delegates.valueAt(i);
+            ItemViewDelegate<T> delegate = mDelegates.valueAt(i);
             if (delegate.isForThisViewType(item, position)) {
                 return delegate;
             }
@@ -106,7 +72,4 @@ public class ItemViewDelegateManager<T> {
         return getItemViewDelegate(viewType).getItemViewLayoutId();
     }
 
-    public int getItemViewLayoutId(T item, int position) {
-        return getItemViewDelegate(item, position).getItemViewLayoutId();
-    }
 }

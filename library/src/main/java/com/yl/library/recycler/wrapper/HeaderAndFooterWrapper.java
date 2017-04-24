@@ -6,7 +6,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.yl.library.recycler.MultiTypeRecyclerAdapter;
 import com.yl.library.recycler.ViewHolder4r;
 import com.yl.library.recycler.utils.SpanSizeUtils;
 
@@ -24,25 +23,6 @@ public class HeaderAndFooterWrapper extends RecyclerView.Adapter<RecyclerView.Vi
 
     public HeaderAndFooterWrapper(RecyclerView.Adapter adapter) {
         mInnerAdapter = adapter;
-        if (mInnerAdapter instanceof LoadMoreWrapper) {
-            LoadMoreWrapper loadMoreWrapper = (LoadMoreWrapper) mInnerAdapter;
-            correctPosition(loadMoreWrapper.getInnerAdapter());
-        } else {
-            correctPosition(mInnerAdapter);
-        }
-    }
-
-    // 修正了添加header后的角标偏移
-    private void correctPosition(RecyclerView.Adapter adapter) {
-        if (adapter instanceof MultiTypeRecyclerAdapter) {
-            MultiTypeRecyclerAdapter mra = (MultiTypeRecyclerAdapter) adapter;
-            mra.setOnClickPositionListener(new MultiTypeRecyclerAdapter.OnClickPositionListener() {
-                @Override
-                public int updateClickPosition(int realPosition) {
-                    return realPosition - mHeaderViews.size();
-                }
-            });
-        }
     }
 
     public RecyclerView.Adapter getInnerAdapter() {
