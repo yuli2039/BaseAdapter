@@ -12,14 +12,14 @@ import com.yl.library.common.ItemViewDelegateManager;
 
 import java.util.List;
 
-public class MultiTypeListAdapter<T> extends BaseAdapter {
+public class MultiTypeLvAdapter<T> extends BaseAdapter {
     protected Context mContext;
     protected List<T> mDatas;
     protected View mEmptyView;
 
     private ItemViewDelegateManager<T> mItemViewDelegateManager;
 
-    public MultiTypeListAdapter(Context context, List<T> datas) {
+    public MultiTypeLvAdapter(Context context, List<T> datas) {
         this.mContext = context;
         this.mDatas = datas;
         mItemViewDelegateManager = new ItemViewDelegateManager<>();
@@ -37,12 +37,12 @@ public class MultiTypeListAdapter<T> extends BaseAdapter {
         });
     }
 
-    public MultiTypeListAdapter setEmptyView(View emptyView) {
+    public MultiTypeLvAdapter setEmptyView(View emptyView) {
         this.mEmptyView = emptyView;
         return this;
     }
 
-    public MultiTypeListAdapter addItemViewDelegate(ItemViewDelegate<T> itemViewDelegate) {
+    public MultiTypeLvAdapter addItemViewDelegate(ItemViewDelegate<T> itemViewDelegate) {
         mItemViewDelegateManager.addDelegate(itemViewDelegate);
         return this;
     }

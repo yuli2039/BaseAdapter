@@ -10,7 +10,7 @@ import com.yl.library.common.ItemViewDelegateManager;
 
 import java.util.List;
 
-public class MultiTypeRecyclerAdapter<T> extends RecyclerView.Adapter<ViewHolder4r> {
+public class MultiTypeRvAdapter<T> extends RecyclerView.Adapter<ViewHolder4r> {
     protected Context mContext;
     protected List<T> mDatas;
 
@@ -19,14 +19,14 @@ public class MultiTypeRecyclerAdapter<T> extends RecyclerView.Adapter<ViewHolder
     protected OnItemClickListener mOnItemClickListener;
     protected OnItemLongClickListener mOnItemLongClickListener;
 
-    public MultiTypeRecyclerAdapter(Context context, List<T> datas) {
+    public MultiTypeRvAdapter(Context context, List<T> datas) {
         mContext = context;
         mDatas = datas;
         mItemViewDelegateManager = new ItemViewDelegateManager();
         registerAdapterDataObserver(new EmptyDataObserver());
     }
 
-    public MultiTypeRecyclerAdapter setEmptyView(View emptyView) {
+    public MultiTypeRvAdapter setEmptyView(View emptyView) {
         this.mEmptyView = emptyView;
         return this;
     }
@@ -108,7 +108,7 @@ public class MultiTypeRecyclerAdapter<T> extends RecyclerView.Adapter<ViewHolder
         return mDatas;
     }
 
-    public MultiTypeRecyclerAdapter addItemViewDelegate(ItemViewDelegate<T> itemViewDelegate) {
+    public MultiTypeRvAdapter addItemViewDelegate(ItemViewDelegate<T> itemViewDelegate) {
         mItemViewDelegateManager.addDelegate(itemViewDelegate);
         return this;
     }

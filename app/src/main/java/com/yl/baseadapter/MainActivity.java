@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
         startActivity(new Intent(this, MultiItemRvActivity.class));
     }
     public void btnAdd(View v) {
-        startActivity(new Intent(this, ImageActivity.class));
+        startActivity(new Intent(this, ImageSelectActivity.class));
     }
 
 }

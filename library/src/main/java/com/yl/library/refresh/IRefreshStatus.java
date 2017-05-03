@@ -1,7 +1,7 @@
-package com.yl.library.common.refresh;
+package com.yl.library.refresh;
 
 /**
- *
+ * the refreshHeader must implements this interface
  */
 public interface IRefreshStatus {
     /**

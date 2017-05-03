@@ -7,7 +7,7 @@ import com.yl.library.common.ViewHolder;
 
 import java.util.List;
 
-public abstract class ListAdapter<T> extends MultiTypeListAdapter<T> {
+public abstract class ListAdapter<T> extends MultiTypeLvAdapter<T> {
 
     public ListAdapter(Context context, final int layoutId, List<T> datas) {
         super(context, datas);

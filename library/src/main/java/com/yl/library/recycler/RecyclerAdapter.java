@@ -7,7 +7,7 @@ import com.yl.library.common.ViewHolder;
 
 import java.util.List;
 
-public abstract class RecyclerAdapter<T> extends MultiTypeRecyclerAdapter<T> {
+public abstract class RecyclerAdapter<T> extends MultiTypeRvAdapter<T> {
 
     public RecyclerAdapter(final Context context, final int layoutId, List<T> datas) {
         super(context, datas);

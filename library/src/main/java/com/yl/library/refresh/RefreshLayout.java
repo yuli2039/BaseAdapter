@@ -1,4 +1,4 @@
-package com.yl.library.common.refresh;
+package com.yl.library.refresh;
 
 import android.content.Context;
 import android.support.v4.view.MotionEventCompat;

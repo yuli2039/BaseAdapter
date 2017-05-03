@@ -8,6 +8,7 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -15,8 +16,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.yl.library.common.loadmore.DefaultLoadMoreFooter;
 import com.yl.library.common.ViewHolder;
+import com.yl.library.loadmore.DefaultLoadMoreFooter;
 import com.yl.library.recycler.RecyclerAdapter;
 import com.yl.library.recycler.ViewHolder4r;
 import com.yl.library.recycler.wrapper.HeaderAndFooterWrapper;
@@ -35,7 +36,6 @@ public class RecyclerViewActivity extends AppCompatActivity {
     private HeaderAndFooterWrapper mHeaderAndFooterWrapper;
     private LoadMoreWrapper mLoadMoreWrapper;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,7 +44,6 @@ public class RecyclerViewActivity extends AppCompatActivity {
         initDatas();
 
         mRecyclerView = (RecyclerView) findViewById(R.id.id_recyclerview);
-//        mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLayoutManager(new GridLayoutManager(this, 2));
 
         mAdapter = new RecyclerAdapter<String>(this, R.layout.item_list, mDatas) {
@@ -94,19 +93,20 @@ public class RecyclerViewActivity extends AppCompatActivity {
     }
 
     private void initHeaderAndFooter() {
+        TextView headerView1 = new TextView(this);
+        headerView1.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 100));
+        headerView1.setGravity(Gravity.CENTER);
+        headerView1.setBackgroundColor(Color.parseColor("#ff0000"));
+        headerView1.setText("Header 01");
+        TextView headerView2 = new TextView(this);
+        headerView2.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 100));
+        headerView2.setGravity(Gravity.CENTER);
+        headerView2.setBackgroundColor(Color.parseColor("#ffff00"));
+        headerView2.setText("Header 02");
+
         mHeaderAndFooterWrapper = new HeaderAndFooterWrapper(mAdapter);
-
-        TextView h1 = new TextView(this);
-        h1.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 100));
-        h1.setBackgroundColor(Color.parseColor("#ff0000"));
-        h1.setText("Header 01");
-        TextView h2 = new TextView(this);
-        h2.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 100));
-        h2.setBackgroundColor(Color.parseColor("#ffff00"));
-        h2.setText("Header 02");
-
-        mHeaderAndFooterWrapper.addHeaderView(h1);
-        mHeaderAndFooterWrapper.addHeaderView(h2);
+        mHeaderAndFooterWrapper.addHeaderView(headerView1);
+        mHeaderAndFooterWrapper.addHeaderView(headerView2);
     }
 
     private void initDatas() {

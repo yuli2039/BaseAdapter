@@ -6,13 +6,13 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.ViewGroup;
 
-import com.yl.library.common.loadmore.ILoadMore;
+import com.yl.library.loadmore.ILoadMore;
 import com.yl.library.recycler.ViewHolder4r;
 import com.yl.library.recycler.utils.SpanSizeUtils;
 
-import static com.yl.library.common.loadmore.ILoadMore.Status.COMPLETE;
-import static com.yl.library.common.loadmore.ILoadMore.Status.LOADING;
-import static com.yl.library.common.loadmore.ILoadMore.Status.NOMORE;
+import static com.yl.library.loadmore.ILoadMore.Status.COMPLETE;
+import static com.yl.library.loadmore.ILoadMore.Status.LOADING;
+import static com.yl.library.loadmore.ILoadMore.Status.NOMORE;
 
 /**
  * recyclerview加载更多的包装类

@@ -1,0 +1,7 @@
+<resources>
+    <dimen name="ptr_height">60dp</dimen>
+    <dimen name="ptr_icon_size">25dp</dimen>
+    <dimen name="ptr_text_margin">10dp</dimen>
+    <dimen name="ptr_text_size">12sp</dimen>
+
+</resources>

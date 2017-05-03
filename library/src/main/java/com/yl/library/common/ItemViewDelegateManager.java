@@ -37,7 +37,10 @@ public class ItemViewDelegateManager<T> {
     }
 
     public int getItemViewType(ItemViewDelegate itemViewDelegate) {
-        return mDelegates.indexOfValue(itemViewDelegate);
+        int viewType = mDelegates.indexOfValue(itemViewDelegate);
+        if (viewType < 0)
+            throw new IllegalArgumentException("No ItemViewDelegate finded");
+        return viewType;
     }
 
     public int getItemViewType(T item, int position) {

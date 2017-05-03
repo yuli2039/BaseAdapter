@@ -1,4 +1,4 @@
-package com.yl.library.common.loadmore;
+package com.yl.library.loadmore;
 
 import android.view.View;
 

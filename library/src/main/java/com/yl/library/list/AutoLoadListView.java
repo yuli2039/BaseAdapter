@@ -6,12 +6,12 @@ import android.util.AttributeSet;
 import android.widget.AbsListView;
 import android.widget.ListView;
 
-import com.yl.library.common.loadmore.DefaultLoadMoreFooter;
-import com.yl.library.common.loadmore.ILoadMore;
+import com.yl.library.loadmore.DefaultLoadMoreFooter;
+import com.yl.library.loadmore.ILoadMore;
 
-import static com.yl.library.common.loadmore.ILoadMore.Status.COMPLETE;
-import static com.yl.library.common.loadmore.ILoadMore.Status.LOADING;
-import static com.yl.library.common.loadmore.ILoadMore.Status.NOMORE;
+import static com.yl.library.loadmore.ILoadMore.Status.COMPLETE;
+import static com.yl.library.loadmore.ILoadMore.Status.LOADING;
+import static com.yl.library.loadmore.ILoadMore.Status.NOMORE;
 
 /**
  * 加载更多的listview

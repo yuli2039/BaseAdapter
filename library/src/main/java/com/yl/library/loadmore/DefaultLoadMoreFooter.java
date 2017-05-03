@@ -1,4 +1,4 @@
-package com.yl.library.common.loadmore;
+package com.yl.library.loadmore;
 
 import android.content.Context;
 import android.content.res.Resources;
@@ -34,7 +34,8 @@ public class DefaultLoadMoreFooter extends LinearLayout implements ILoadMore {
         setGravity(Gravity.CENTER);
         setLayoutParams(new AbsListView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, dp2px(60)));
 
-        mProgressBar = new ProgressBar(getContext());
+        mProgressBar = new ProgressBar(context);
+        mProgressBar.setIndeterminateDrawable(Resources.getSystem().getDrawable(R.drawable.ptr_loading_progress));
         LayoutParams progressBarParams = new LayoutParams(dp2px(25), dp2px(25));
         progressBarParams.rightMargin = dp2px(10);
         mProgressBar.setLayoutParams(progressBarParams);
@@ -47,7 +48,7 @@ public class DefaultLoadMoreFooter extends LinearLayout implements ILoadMore {
         mText.setTextSize(14);
         addView(mText);
 
-        setState(Status.LOADING);
+        setState(Status.COMPLETE);
     }
 
     @Override

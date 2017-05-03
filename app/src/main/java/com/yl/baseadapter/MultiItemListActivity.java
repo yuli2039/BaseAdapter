@@ -8,7 +8,7 @@ import android.view.View;
 import com.yl.baseadapter.adapter.ChatAdapterForListView;
 import com.yl.baseadapter.entity.ChatMessage;
 import com.yl.library.list.AutoLoadListView;
-import com.yl.library.common.refresh.RefreshLayout;
+import com.yl.library.refresh.RefreshLayout;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,6 +28,14 @@ public class MultiItemListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_listview);
 
+        View emptyView = findViewById(R.id.flEmpty);
+        emptyView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                refresh();
+            }
+        });
+
         mRefreshLayout = (RefreshLayout) findViewById(R.id.refreshLayout);
         mRefreshLayout.setOnRefreshListener(new RefreshLayout.OnRefreshListener() {
             @Override
@@ -36,11 +44,6 @@ public class MultiItemListActivity extends AppCompatActivity {
             }
         });
 
-        mDatas.addAll(ChatMessage.MOCK_DATAS);
-
-        adapter = new ChatAdapterForListView(this, mDatas);
-        adapter.setEmptyView(findViewById(R.id.flEmpty));
-
         mListView = (AutoLoadListView) findViewById(R.id.autoListView);
         mListView.setOnLoadMoreListener(new AutoLoadListView.OnLoadMoreListener() {
             @Override
@@ -48,16 +51,16 @@ public class MultiItemListActivity extends AppCompatActivity {
                 loadMore();
             }
         });
+
+        adapter = new ChatAdapterForListView(this, mDatas);
+        adapter.setEmptyView(emptyView);
         mListView.setAdapter(adapter);
 
-    }
-
-    // 模拟没有数据时显示emptyView
-    public void btnClear(View v) {
-        mDatas.clear();
+        // 模拟空数据的情况
         adapter.notifyDataSetChanged();
     }
 
+    // 模拟刷新数据
     private void refresh() {
         new Handler().postDelayed(new Runnable() {
             @Override
@@ -71,9 +74,10 @@ public class MultiItemListActivity extends AppCompatActivity {
 
                 mRefreshLayout.refreshComplete();
             }
-        }, 2000);
+        }, 1500);
     }
 
+    // 模拟加载更多
     private void loadMore() {
         new Handler().postDelayed(new Runnable() {
             @Override
